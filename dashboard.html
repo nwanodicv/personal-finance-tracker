@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Personal Finance Tracker</title>
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-------------scripts-------->
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+
+    <div class="currency-selector">
+      <label for="baseCurrency">Base Currency:</label>
+      <select id="baseCurrency">
+        <option value="NGN">NGN</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- Overview Section -->
+    <section class="overview">
+      <div class="card">
+        <h3>Total Income</h3>
+        <p id="totalIncome">₦0.00</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Expenses</h3>
+        <p id="totalExpenses">₦0.00</p>
+      </div>
+
+      <div class="card">
+        <h3>Balance</h3>
+        <p id="balance">₦0.00</p>
+      </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="charts">
+      <h2>Spending by Category</h2>
+      <canvas id="expenseChart" width="400" height="300">
+        <!-- Chart will be rendered here -->
+      </canvas>
+    </section>
+
+    <section class="month-filter">
+      <label for="monthSelect">Filter by Month:</label>
+      <input type="month" id="monthSelect">
+    </section>
+    
+
+    <!-- Transactions Section -->
+    <section class="transactions">
+      <div class="transactions-header">
+        <h2>Recent Transactions</h2>
+        <button id="addTransactionBtn" class="btn-primary">
+          Add Transaction
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Currency</th>
+          </tr>
+        </thead>
+        <tbody id="transactionList">
+          <!-- Transactions will be injected here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add Transaction Form -->
+    <section class="add-transaction" id="transactionForm" hidden>
+      <h2>Add Transaction</h2>
+    
+      <form id="financeForm">
+        <label>
+          Transaction Type
+          <select id="type" required>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </label>
+    
+        <label>
+          Amount
+          <input type="number" id="amount" required />
+        </label>
+    
+        <label>
+          Category
+          <input type="text" id="category" required />
+        </label>
+    
+        <label>
+          Date
+          <input type="date" id="date" required />
+        </label>
+    
+        <label>
+          Currency
+          <select id="currency">
+            <option value="NGN">NGN</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </label>
+    
+        <label>
+          Description
+          <input type="text" id="description" />
+        </label>
+    
+        <button type="submit" class="btn-primary">Save</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+      </form>
+    </section>
+    
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Personal Finance Tracker – Final Year Project</p>
+  </footer>
+
+</body>
+</html>
